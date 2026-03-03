@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
   template: `
-    <p>
-      home works!
-    </p>
+    <h2>Benvenuto nel mio Curriculum</h2>
   `,
-  styles: ``,
+  styles: [`
+    h2 { color: darkblue; font-size: 20px; margin-top: 20px; }
+  `]
 })
-export class Home {
-
-}
+export class Home {}

@@ -1,30 +1,37 @@
 import { Component } from '@angular/core';
-import { Ciccio } from "./pages/ciccio";
+import { RouterOutlet, RouterLink, RouterModule } from '@angular/router';
 import { Home } from './pages/home';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { Route } from '@angular/router';
+import { EsperienzeFormative } from './pages/esperienze_formative';
+import { EsperienzeLavorative } from './pages/esperienze_lavorative';
+import { Contatto } from './pages/contatto';
+import { Certificazioni } from './pages/certificazioni';
 
 @Component({
-  selector: 'app-root', // rimane lo stesso
-  imports: [Ciccio, RouterOutlet, RouterModule,RouterLink],
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterModule,
+    Home,
+    EsperienzeFormative,
+    EsperienzeLavorative,
+    Contatto,
+    Certificazioni
+  ],
   template: `
-  <h1>Ciccio</h1>
-  <app-ciccio></app-ciccio>
-  ciao ciao ciao
-  <button routerLink="home">Vai alla Home</button>
-  <button routerLink="Ciccio"> pagina ciccio </button>
-  <router-outlet  />
+    <!-- Bottoni di navigazione -->
+    <nav style="margin-bottom: 20px;">
+      <a [routerLink]="['/home']"><button>Home</button></a>
+      <a [routerLink]="['/esperienze_formative']"><button>Esperienze Formative</button></a>
+      <a [routerLink]="['/esperienze_lavorative']"><button>Esperienze Lavorative</button></a>
+      <a [routerLink]="['/contatto']"><button>Contatto</button></a>
+      <a [routerLink]="['/certificazioni']"><button>Certificazioni</button></a>
+    </nav>
+
+    <!-- Router outlet -->
+    <router-outlet></router-outlet>
   `,
-  styles:[],
+  styles: []
 })
-
-export class Contatore {
-  contatore = 0;
-
-  aumenta() { this.contatore += 1; }
-  diminuisci() { this.contatore -= 1; }
-  resetta() { this.contatore = 0; }
-}
-
+export class Contatore {}
